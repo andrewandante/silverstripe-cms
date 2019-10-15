@@ -206,8 +206,8 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
      * This will apply after the magic of appending Controller, and in order
      * Must be applied to SiteTree config e.g.
      *
-     * SilverStripe\Cms\Model\SiteTree:
-     *   - namespace_map:
+     * SilverStripe\CMS\Model\SiteTree:
+     *   namespace_map:
      *     "App\Pages": "App\Control"
      *
      * Will map App\Pages\MyPage to App\Control\MyPageController
@@ -2986,7 +2986,7 @@ class SiteTree extends DataObject implements PermissionProvider, i18nEntityProvi
                     Deprecation::SCOPE_GLOBAL
                 );
                 return $candidate;
-            } elseif ($namespaceMap !== null) {
+            } elseif (is_array($namespaceMap)) {
                 foreach ($namespaceMap as $pageNamespace => $controllerNamespace) {
                     if (strpos($class, $pageNamespace) === false) {
                         continue;
